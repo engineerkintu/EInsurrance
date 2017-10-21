@@ -8,3 +8,6 @@ Visual studio 2013
 
 #Languages
 C#, Ajax, css, javascript, html
+
+#Developer
+Moses
