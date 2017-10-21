@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="InsurranceDatabaseModelStoreContainer" CdmEntityContainer="InsurranceDatabaseEntities">
+    <EntitySetMapping Name="ClearInsurrances">
+      <EntityTypeMapping TypeName="InsurranceDatabaseModel.ClearInsurrance">
+        <MappingFragment StoreEntitySet="ClearInsurrance">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Customer" ColumnName="Customer" />
+          <ScalarProperty Name="Insurrance" ColumnName="Insurrance" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="Month" ColumnName="Month" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Funder" ColumnName="Funder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Funders">
+      <EntityTypeMapping TypeName="InsurranceDatabaseModel.Funder">
+        <MappingFragment StoreEntitySet="Funder">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="OtherDetails" ColumnName="OtherDetails" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Insurrances">
+      <EntityTypeMapping TypeName="InsurranceDatabaseModel.Insurrance">
+        <MappingFragment StoreEntitySet="Insurrance">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PayHospitals">
+      <EntityTypeMapping TypeName="InsurranceDatabaseModel.PayHospital">
+        <MappingFragment StoreEntitySet="PayHospital">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Hospital" ColumnName="Hospital" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="Month" ColumnName="Month" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RegCustomers">
+      <EntityTypeMapping TypeName="InsurranceDatabaseModel.RegCustomer">
+        <MappingFragment StoreEntitySet="RegCustomer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FName" ColumnName="FName" />
+          <ScalarProperty Name="Sname" ColumnName="Sname" />
+          <ScalarProperty Name="OName" ColumnName="OName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DOBDay" ColumnName="DOBDay" />
+          <ScalarProperty Name="DOBMonth" ColumnName="DOBMonth" />
+          <ScalarProperty Name="DOBYear" ColumnName="DOBYear" />
+          <ScalarProperty Name="RegDay" ColumnName="RegDay" />
+          <ScalarProperty Name="RegMonth" ColumnName="RegMonth" />
+          <ScalarProperty Name="RegYear" ColumnName="RegYear" />
+          <ScalarProperty Name="District" ColumnName="District" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RegHospitals">
+      <EntityTypeMapping TypeName="InsurranceDatabaseModel.RegHospital">
+        <MappingFragment StoreEntitySet="RegHospital">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RegDay" ColumnName="RegDay" />
+          <ScalarProperty Name="RegMonth" ColumnName="RegMonth" />
+          <ScalarProperty Name="RegYear" ColumnName="RegYear" />
+          <ScalarProperty Name="District" ColumnName="District" />
+          <ScalarProperty Name="Account" ColumnName="Account" />
+          <ScalarProperty Name="Bank" ColumnName="Bank" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TreatCustomers">
+      <EntityTypeMapping TypeName="InsurranceDatabaseModel.TreatCustomer">
+        <MappingFragment StoreEntitySet="TreatCustomer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Customer" ColumnName="Customer" />
+          <ScalarProperty Name="Hospital" ColumnName="Hospital" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="Month" ColumnName="Month" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Treatment" ColumnName="Treatment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

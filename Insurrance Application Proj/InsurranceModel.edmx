@@ -1,0 +1,541 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="InsurranceDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ClearInsurrance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer" Type="nvarchar" MaxLength="50" />
+          <Property Name="Insurrance" Type="int" />
+          <Property Name="Day" Type="int" />
+          <Property Name="Month" Type="nvarchar" MaxLength="50" />
+          <Property Name="Year" Type="int" />
+          <Property Name="Funder" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Funder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Location" Type="nvarchar" MaxLength="50" />
+          <Property Name="OtherDetails" Type="text" />
+        </EntityType>
+        <EntityType Name="Insurrance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Details" Type="text" />
+          <Property Name="Amount" Type="money" />
+        </EntityType>
+        <EntityType Name="PayHospital">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hospital" Type="nvarchar" MaxLength="50" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="Day" Type="int" />
+          <Property Name="Month" Type="nvarchar" MaxLength="50" />
+          <Property Name="Year" Type="int" />
+        </EntityType>
+        <EntityType Name="RegCustomer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sname" Type="nvarchar" MaxLength="50" />
+          <Property Name="OName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="DOBDay" Type="int" />
+          <Property Name="DOBMonth" Type="nvarchar" MaxLength="50" />
+          <Property Name="DOBYear" Type="int" />
+          <Property Name="RegDay" Type="int" />
+          <Property Name="RegMonth" Type="nvarchar" MaxLength="50" />
+          <Property Name="RegYear" Type="int" />
+          <Property Name="District" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Photo" Type="image" />
+        </EntityType>
+        <EntityType Name="RegHospital">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="RegDay" Type="int" />
+          <Property Name="RegMonth" Type="nvarchar" MaxLength="50" />
+          <Property Name="RegYear" Type="int" />
+          <Property Name="District" Type="nvarchar" MaxLength="50" />
+          <Property Name="Account" Type="nvarchar" MaxLength="50" />
+          <Property Name="Bank" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TreatCustomer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer" Type="nvarchar" MaxLength="50" />
+          <Property Name="Hospital" Type="nvarchar" MaxLength="50" />
+          <Property Name="Day" Type="int" />
+          <Property Name="Month" Type="nvarchar" MaxLength="50" />
+          <Property Name="Year" Type="int" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="Treatment" Type="text" />
+        </EntityType>
+        <Association Name="FK_ClearInsurrance_ToTable">
+          <End Role="RegCustomer" Type="Self.RegCustomer" Multiplicity="0..1" />
+          <End Role="ClearInsurrance" Type="Self.ClearInsurrance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegCustomer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClearInsurrance">
+              <PropertyRef Name="Customer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClearInsurrance_ToTable_1">
+          <End Role="Insurrance" Type="Self.Insurrance" Multiplicity="0..1" />
+          <End Role="ClearInsurrance" Type="Self.ClearInsurrance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Insurrance">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClearInsurrance">
+              <PropertyRef Name="Insurrance" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClearInsurrance_ToTable_2">
+          <End Role="Funder" Type="Self.Funder" Multiplicity="0..1" />
+          <End Role="ClearInsurrance" Type="Self.ClearInsurrance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Funder">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClearInsurrance">
+              <PropertyRef Name="Funder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PayHospital_ToTable">
+          <End Role="RegHospital" Type="Self.RegHospital" Multiplicity="0..1" />
+          <End Role="PayHospital" Type="Self.PayHospital" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegHospital">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PayHospital">
+              <PropertyRef Name="Hospital" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TreatCustomer_ToTable">
+          <End Role="RegCustomer" Type="Self.RegCustomer" Multiplicity="0..1" />
+          <End Role="TreatCustomer" Type="Self.TreatCustomer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegCustomer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TreatCustomer">
+              <PropertyRef Name="Customer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TreatCustomer_ToTable_1">
+          <End Role="RegHospital" Type="Self.RegHospital" Multiplicity="0..1" />
+          <End Role="TreatCustomer" Type="Self.TreatCustomer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegHospital">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TreatCustomer">
+              <PropertyRef Name="Hospital" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="InsurranceDatabaseModelStoreContainer">
+          <EntitySet Name="ClearInsurrance" EntityType="Self.ClearInsurrance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Funder" EntityType="Self.Funder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Insurrance" EntityType="Self.Insurrance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PayHospital" EntityType="Self.PayHospital" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegCustomer" EntityType="Self.RegCustomer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegHospital" EntityType="Self.RegHospital" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TreatCustomer" EntityType="Self.TreatCustomer" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ClearInsurrance_ToTable" Association="Self.FK_ClearInsurrance_ToTable">
+            <End Role="RegCustomer" EntitySet="RegCustomer" />
+            <End Role="ClearInsurrance" EntitySet="ClearInsurrance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClearInsurrance_ToTable_1" Association="Self.FK_ClearInsurrance_ToTable_1">
+            <End Role="Insurrance" EntitySet="Insurrance" />
+            <End Role="ClearInsurrance" EntitySet="ClearInsurrance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClearInsurrance_ToTable_2" Association="Self.FK_ClearInsurrance_ToTable_2">
+            <End Role="Funder" EntitySet="Funder" />
+            <End Role="ClearInsurrance" EntitySet="ClearInsurrance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PayHospital_ToTable" Association="Self.FK_PayHospital_ToTable">
+            <End Role="RegHospital" EntitySet="RegHospital" />
+            <End Role="PayHospital" EntitySet="PayHospital" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TreatCustomer_ToTable" Association="Self.FK_TreatCustomer_ToTable">
+            <End Role="RegCustomer" EntitySet="RegCustomer" />
+            <End Role="TreatCustomer" EntitySet="TreatCustomer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TreatCustomer_ToTable_1" Association="Self.FK_TreatCustomer_ToTable_1">
+            <End Role="RegHospital" EntitySet="RegHospital" />
+            <End Role="TreatCustomer" EntitySet="TreatCustomer" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InsurranceDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ClearInsurrance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Insurrance" Type="Int32" />
+          <Property Name="Day" Type="Int32" />
+          <Property Name="Month" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="Funder" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RegCustomer" Relationship="Self.FK_ClearInsurrance_ToTable" FromRole="ClearInsurrance" ToRole="RegCustomer" />
+          <NavigationProperty Name="Insurrance1" Relationship="Self.FK_ClearInsurrance_ToTable_1" FromRole="ClearInsurrance" ToRole="Insurrance" />
+          <NavigationProperty Name="Funder1" Relationship="Self.FK_ClearInsurrance_ToTable_2" FromRole="ClearInsurrance" ToRole="Funder" />
+        </EntityType>
+        <EntityType Name="Funder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OtherDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ClearInsurrances" Relationship="Self.FK_ClearInsurrance_ToTable_2" FromRole="Funder" ToRole="ClearInsurrance" />
+        </EntityType>
+        <EntityType Name="Insurrance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="ClearInsurrances" Relationship="Self.FK_ClearInsurrance_ToTable_1" FromRole="Insurrance" ToRole="ClearInsurrance" />
+        </EntityType>
+        <EntityType Name="PayHospital">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hospital" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Day" Type="Int32" />
+          <Property Name="Month" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Year" Type="Int32" />
+          <NavigationProperty Name="RegHospital" Relationship="Self.FK_PayHospital_ToTable" FromRole="PayHospital" ToRole="RegHospital" />
+        </EntityType>
+        <EntityType Name="RegCustomer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DOBDay" Type="Int32" />
+          <Property Name="DOBMonth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DOBYear" Type="Int32" />
+          <Property Name="RegDay" Type="Int32" />
+          <Property Name="RegMonth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RegYear" Type="Int32" />
+          <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="ClearInsurrances" Relationship="Self.FK_ClearInsurrance_ToTable" FromRole="RegCustomer" ToRole="ClearInsurrance" />
+          <NavigationProperty Name="TreatCustomers" Relationship="Self.FK_TreatCustomer_ToTable" FromRole="RegCustomer" ToRole="TreatCustomer" />
+        </EntityType>
+        <EntityType Name="RegHospital">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RegDay" Type="Int32" />
+          <Property Name="RegMonth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RegYear" Type="Int32" />
+          <Property Name="District" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Account" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Bank" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PayHospitals" Relationship="Self.FK_PayHospital_ToTable" FromRole="RegHospital" ToRole="PayHospital" />
+          <NavigationProperty Name="TreatCustomers" Relationship="Self.FK_TreatCustomer_ToTable_1" FromRole="RegHospital" ToRole="TreatCustomer" />
+        </EntityType>
+        <EntityType Name="TreatCustomer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hospital" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Day" Type="Int32" />
+          <Property Name="Month" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Treatment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RegCustomer" Relationship="Self.FK_TreatCustomer_ToTable" FromRole="TreatCustomer" ToRole="RegCustomer" />
+          <NavigationProperty Name="RegHospital" Relationship="Self.FK_TreatCustomer_ToTable_1" FromRole="TreatCustomer" ToRole="RegHospital" />
+        </EntityType>
+        <Association Name="FK_ClearInsurrance_ToTable">
+          <End Role="RegCustomer" Type="Self.RegCustomer" Multiplicity="0..1" />
+          <End Role="ClearInsurrance" Type="Self.ClearInsurrance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegCustomer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClearInsurrance">
+              <PropertyRef Name="Customer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClearInsurrance_ToTable_1">
+          <End Role="Insurrance" Type="Self.Insurrance" Multiplicity="0..1" />
+          <End Role="ClearInsurrance" Type="Self.ClearInsurrance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Insurrance">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClearInsurrance">
+              <PropertyRef Name="Insurrance" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClearInsurrance_ToTable_2">
+          <End Role="Funder" Type="Self.Funder" Multiplicity="0..1" />
+          <End Role="ClearInsurrance" Type="Self.ClearInsurrance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Funder">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClearInsurrance">
+              <PropertyRef Name="Funder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PayHospital_ToTable">
+          <End Role="RegHospital" Type="Self.RegHospital" Multiplicity="0..1" />
+          <End Role="PayHospital" Type="Self.PayHospital" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegHospital">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PayHospital">
+              <PropertyRef Name="Hospital" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TreatCustomer_ToTable">
+          <End Role="RegCustomer" Type="Self.RegCustomer" Multiplicity="0..1" />
+          <End Role="TreatCustomer" Type="Self.TreatCustomer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegCustomer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TreatCustomer">
+              <PropertyRef Name="Customer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TreatCustomer_ToTable_1">
+          <End Role="RegHospital" Type="Self.RegHospital" Multiplicity="0..1" />
+          <End Role="TreatCustomer" Type="Self.TreatCustomer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegHospital">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TreatCustomer">
+              <PropertyRef Name="Hospital" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="InsurranceDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ClearInsurrances" EntityType="Self.ClearInsurrance" />
+          <EntitySet Name="Funders" EntityType="Self.Funder" />
+          <EntitySet Name="Insurrances" EntityType="Self.Insurrance" />
+          <EntitySet Name="PayHospitals" EntityType="Self.PayHospital" />
+          <EntitySet Name="RegCustomers" EntityType="Self.RegCustomer" />
+          <EntitySet Name="RegHospitals" EntityType="Self.RegHospital" />
+          <EntitySet Name="TreatCustomers" EntityType="Self.TreatCustomer" />
+          <AssociationSet Name="FK_ClearInsurrance_ToTable" Association="Self.FK_ClearInsurrance_ToTable">
+            <End Role="RegCustomer" EntitySet="RegCustomers" />
+            <End Role="ClearInsurrance" EntitySet="ClearInsurrances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClearInsurrance_ToTable_1" Association="Self.FK_ClearInsurrance_ToTable_1">
+            <End Role="Insurrance" EntitySet="Insurrances" />
+            <End Role="ClearInsurrance" EntitySet="ClearInsurrances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClearInsurrance_ToTable_2" Association="Self.FK_ClearInsurrance_ToTable_2">
+            <End Role="Funder" EntitySet="Funders" />
+            <End Role="ClearInsurrance" EntitySet="ClearInsurrances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PayHospital_ToTable" Association="Self.FK_PayHospital_ToTable">
+            <End Role="RegHospital" EntitySet="RegHospitals" />
+            <End Role="PayHospital" EntitySet="PayHospitals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TreatCustomer_ToTable" Association="Self.FK_TreatCustomer_ToTable">
+            <End Role="RegCustomer" EntitySet="RegCustomers" />
+            <End Role="TreatCustomer" EntitySet="TreatCustomers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TreatCustomer_ToTable_1" Association="Self.FK_TreatCustomer_ToTable_1">
+            <End Role="RegHospital" EntitySet="RegHospitals" />
+            <End Role="TreatCustomer" EntitySet="TreatCustomers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="InsurranceDatabaseModelStoreContainer" CdmEntityContainer="InsurranceDatabaseEntities">
+          <EntitySetMapping Name="ClearInsurrances">
+            <EntityTypeMapping TypeName="InsurranceDatabaseModel.ClearInsurrance">
+              <MappingFragment StoreEntitySet="ClearInsurrance">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
+                <ScalarProperty Name="Insurrance" ColumnName="Insurrance" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Funder" ColumnName="Funder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Funders">
+            <EntityTypeMapping TypeName="InsurranceDatabaseModel.Funder">
+              <MappingFragment StoreEntitySet="Funder">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="OtherDetails" ColumnName="OtherDetails" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Insurrances">
+            <EntityTypeMapping TypeName="InsurranceDatabaseModel.Insurrance">
+              <MappingFragment StoreEntitySet="Insurrance">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PayHospitals">
+            <EntityTypeMapping TypeName="InsurranceDatabaseModel.PayHospital">
+              <MappingFragment StoreEntitySet="PayHospital">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Hospital" ColumnName="Hospital" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegCustomers">
+            <EntityTypeMapping TypeName="InsurranceDatabaseModel.RegCustomer">
+              <MappingFragment StoreEntitySet="RegCustomer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="Sname" ColumnName="Sname" />
+                <ScalarProperty Name="OName" ColumnName="OName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DOBDay" ColumnName="DOBDay" />
+                <ScalarProperty Name="DOBMonth" ColumnName="DOBMonth" />
+                <ScalarProperty Name="DOBYear" ColumnName="DOBYear" />
+                <ScalarProperty Name="RegDay" ColumnName="RegDay" />
+                <ScalarProperty Name="RegMonth" ColumnName="RegMonth" />
+                <ScalarProperty Name="RegYear" ColumnName="RegYear" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegHospitals">
+            <EntityTypeMapping TypeName="InsurranceDatabaseModel.RegHospital">
+              <MappingFragment StoreEntitySet="RegHospital">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RegDay" ColumnName="RegDay" />
+                <ScalarProperty Name="RegMonth" ColumnName="RegMonth" />
+                <ScalarProperty Name="RegYear" ColumnName="RegYear" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TreatCustomers">
+            <EntityTypeMapping TypeName="InsurranceDatabaseModel.TreatCustomer">
+              <MappingFragment StoreEntitySet="TreatCustomer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
+                <ScalarProperty Name="Hospital" ColumnName="Hospital" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Treatment" ColumnName="Treatment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

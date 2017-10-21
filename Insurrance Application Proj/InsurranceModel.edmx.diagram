@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="22be6b95658946d7875663e62e13c0b4" Name="Diagram1">
+        <EntityTypeShape EntityType="InsurranceDatabaseModel.ClearInsurrance" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsurranceDatabaseModel.Funder" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsurranceDatabaseModel.Insurrance" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsurranceDatabaseModel.PayHospital" Width="1.5" PointX="6" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsurranceDatabaseModel.RegCustomer" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsurranceDatabaseModel.RegHospital" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsurranceDatabaseModel.TreatCustomer" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="InsurranceDatabaseModel.FK_ClearInsurrance_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="InsurranceDatabaseModel.FK_ClearInsurrance_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="InsurranceDatabaseModel.FK_ClearInsurrance_ToTable_2" ManuallyRouted="false" />
+        <AssociationConnector Association="InsurranceDatabaseModel.FK_PayHospital_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="InsurranceDatabaseModel.FK_TreatCustomer_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="InsurranceDatabaseModel.FK_TreatCustomer_ToTable_1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
